@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -14,7 +16,7 @@ public class FieldsEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
     @Column(name = "name_field")
     private String nameField;
@@ -23,7 +25,16 @@ public class FieldsEntity {
     @Column(name = "local_time")
     private LocalDateTime localDateTimeEvent;
 
+    @Transient
+    private Map<String, String> fieldsAndContents = new HashMap<>();
+
+    public FieldsEntity(LocalDateTime localDateTime, String nameField, String contentFild) {
+        this.localDateTimeEvent = localDateTime;
+        this.nameField = nameField;
+        this.contentField = contentFild;
+    }
     public FieldsEntity(int id, String nameField, String contentFild) {
+        this.id = id;
         this.nameField = nameField;
         this.contentField = contentFild;
     }

@@ -1,5 +1,6 @@
 package com.webproject1.mywebproject.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,17 +10,18 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 @Setter
 @Getter
 public class FieldsEntityDto implements Serializable {
 
-    private int id;
+    private Integer id;
     private String nameField;
     private String contentField;
     private LocalDateTime localDateTimeEvent;
 
     @JsonProperty("fields")
-    Map<String, String> fieldsAndContents = new HashMap<>();
+    private Map<String, String> fieldsAndContents = new HashMap<>();
 
     public FieldsEntityDto(int id, String nameField, String contentFild, LocalDateTime localDateTimeEvent) {
         this.id = id;

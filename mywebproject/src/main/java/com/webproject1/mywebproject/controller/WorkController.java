@@ -20,7 +20,12 @@ public class WorkController {
 
     @PostMapping("/handler-request")
     public ResponseEntity<?> methodHandler(@RequestBody FieldsEntityDto filedsEntityDto){
-
-        return ResponseEntity.ok("Успешно");
+       /* FieldsEntityDto fieldsEntityDtoObject = */workService.createMethod(filedsEntityDto);
+       return ResponseEntity.ok("Успешно");
+        /*if(fieldsEntityDtoObject.getId() != null){
+            return ResponseEntity.ok(fieldsEntityDtoObject);
+        } else{
+            return ResponseEntity.internalServerError().build();
+        }*/
     }
 }
